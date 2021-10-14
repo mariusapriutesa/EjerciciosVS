@@ -6,7 +6,37 @@
         xmlns:local="clr-namespace:Ejemplo2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Botón"/>
-    </Grid>
+    <StackPanel>
+
+        
+        
+        <TextBlock Margin ="20, 20" Text="ALTA USUARIOS" HorizontalAlignment="Center"/>
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource textblock1}"/>
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nombre"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Apellidos"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Edad"/>
+
+            <TextBox Grid.Row="0" Grid.Column="1"/>
+            <TextBox Grid.Row="1" Grid.Column="1"/>
+            <TextBox Grid.Row="2" Grid.Column="1"/>
+
+        </Grid>
+        <Button Content="Aceptar" Width="120" Style="{DynamicResource ButtonStyle1}"/>
+    </StackPanel>
 </Window>
