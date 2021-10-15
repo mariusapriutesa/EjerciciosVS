@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5628668-60F0-4236-9F63-3656641D86B7}</ProjectGuid>
+    <ProjectGuid>{BDC89DE8-130A-4546-ADB9-D442868BAA8C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ejemplo2</RootNamespace>
-    <AssemblyName>Ejemplo2</AssemblyName>
+    <RootNamespace>Ejemplo3</RootNamespace>
+    <AssemblyName>Ejemplo3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -67,15 +67,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\Dictionaries\ButtonStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Dictionaries\ImagesSet.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Dictionaries\TextBlockStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,10 +99,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\boton_morado.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\boton_normal.png" />
+    <Resource Include="Resources\Images\logo2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\fondo1.jpg" />

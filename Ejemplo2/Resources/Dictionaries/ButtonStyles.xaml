@@ -10,9 +10,6 @@
         </Setter>
     </Style>
 
-    <ImageBrush x:Key="boton_normal" ImageSource="../Images/boton_normal.png"/>
-    <ImageBrush x:Key="boton_morado" ImageSource="../Images/boton_morado.png"/>
-
     <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>

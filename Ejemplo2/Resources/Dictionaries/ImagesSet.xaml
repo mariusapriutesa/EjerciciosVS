@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ImageBrush x:Key="boton_normal" ImageSource="../Images/boton_normal.png"/>
+    <ImageBrush x:Key="boton_morado" ImageSource="../Images/boton_morado.png"/>
+    <ImageBrush x:Key="fondo1" ImageSource="../Images/fondo1.jpg"/>
+    <ImageBrush x:Key="fondo2" ImageSource="../Images/fondo2.jpg"/>
+    
+</ResourceDictionary>
