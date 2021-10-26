@@ -1,5 +1,4 @@
-﻿using Ejemplo4.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ejemplo4
+namespace Ejemplo4.Views
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para StudentView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StudentView : UserControl
     {
-        public MainWindow()
+        public StudentView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
-
         }
     }
 }

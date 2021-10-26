@@ -6,8 +6,19 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:Ejemplo4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
+        Title="MainWindow" Height="600" Width="800">
+    <StackPanel Background="Aqua">
+        <!--
         <Image gif:ImageBehavior.AnimatedSource="Resources/Gif/homer.gif" Height="200" HorizontalAlignment="Left"/>
+        -->
+        
+        <StackPanel Orientation="Horizontal">
+            <Button Content="HOME" Command="{Binding UpdateViewCommand}" CommandParameter="home"/>
+            <Button Content="LOGIN" Command="{Binding UpdateViewCommand}" CommandParameter="login"/>
+            <Button Content="ESTUDIANTE" Command="{Binding UpdateViewCommand}" CommandParameter="student"/>
+        </StackPanel>
+
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+
     </StackPanel>
 </Window>
