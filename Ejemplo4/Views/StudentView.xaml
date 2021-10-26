@@ -44,7 +44,38 @@
         <StackPanel Grid.Column="1">
 
             <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
+                <StackPanel>
+                    <TextBlock Text="DATOS ESTUDIANTE" HorizontalAlignment="Center" Margin="15" FontSize="20" FontWeight="DemiBold"/>
+
+
+                    <TextBox materialDesign:HintAssist.Hint="DNI:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            VerticalAlignment="Center" Width="200"
+                            FontSize="16"
+                            materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Nombre:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            VerticalAlignment="Center" Width="200"
+                            FontSize="16"
+                            materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <DatePicker Margin="10" Width="200" HorizontalContentAlignment="Left" 
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                materialDesign:HintAssist.Hint="Fecha de Nacimiento:"
+                                FontSize="16"/>
+
+                    <ComboBox Width="200" materialDesign:HintAssist.Hint="Curso:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" >
+                        <ComboBoxItem Content="Primero"/>
+                        <ComboBoxItem Content="Segundo"/>
+                        <ComboBoxItem Content="Tercero"/>
+                    </ComboBox>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30">
+                        <Button Content="Aceptar" Width="120" Margin="5"/>
+                        <Button Content="Cancelar" Width="120" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+
+                
             </materialDesign:Card>
 
         </StackPanel>
