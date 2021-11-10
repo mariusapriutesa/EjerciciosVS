@@ -16,6 +16,7 @@
             <Button Content="HOME" Command="{Binding UpdateViewCommand}" CommandParameter="home"/>
             <Button Content="LOGIN" Command="{Binding UpdateViewCommand}" CommandParameter="login"/>
             <Button Content="ESTUDIANTE" Command="{Binding UpdateViewCommand}" CommandParameter="student"/>
+            <Button Content="TABLA" Command="{Binding UpdateViewCommand}" CommandParameter="tabla"/>
         </StackPanel>
 
         <ContentControl Content="{Binding SelectedViewModel}"/>

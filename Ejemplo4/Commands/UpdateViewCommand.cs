@@ -28,18 +28,25 @@ namespace Ejemplo4.Commands
         public void Execute(object parameter)
         {
             Console.WriteLine(parameter.ToString());
-            if(parameter.ToString().Equals("home"))
+
+            if (parameter.ToString().Equals("home")) {
+
+                this.viewModel.SelectedViewModel = new HomeViewModel();
+
+            } else if (parameter.ToString().Equals("login"))
             {
-                viewModel.SelectedViewModel = new HomeViewModel();
-            }
-            else if(parameter.ToString().Equals("login"))
+                this.viewModel.SelectedViewModel = new LoginViewModel();
+
+            }else if (parameter.ToString().Equals("student"))
             {
-                viewModel.SelectedViewModel = new LoginViewModel();
-            }
-            else if(parameter.ToString().Equals("student"))
+                this.viewModel.SelectedViewModel = new StudentViewModel();
+
+            } else if (parameter.ToString().Equals("tabla"))
             {
-                viewModel.SelectedViewModel = new StudentViewModel();
+                viewModel.SelectedViewModel = new StudentTableViewModel();
+
             }
         }
+        
     }
 }

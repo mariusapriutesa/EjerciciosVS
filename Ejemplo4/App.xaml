@@ -19,6 +19,9 @@
             <DataTemplate DataType="{x:Type viewmodels:StudentViewModel}">
                 <views:StudentView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:StudentTableViewModel}">
+                <views:StudentTableView/>
+            </DataTemplate>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="Ejemplo4.Views.StudentTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:Ejemplo4.Views"
+             mc:Ignorable="d" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding StudentCommand}" CommandParameter="cargarLista"/>
+        </i:EventTrigger>
+        
+        
+    </i:Interaction.Triggers>
+
+    <Grid Height="850" Width="1200" Background="Beige">
+        <Grid.ColumnDefinitions>
+            <!-- StockPanel tabla de estudiantes
+            -->
+            <ColumnDefinition/>
+            <ColumnDefinition Width="500" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Grid.RowSpan="2" >
+            <ListView x:Name="studentListView" IsEnabled="{Binding CambiarEstudiante}" ItemsSource="{Binding ListaEstudiantes}" MaxWidth="600" SelectionChanged="studentListView_SelectionChanged">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding StudentCommand}"
+                                               CommandParameter="{Binding ElementName=studentListView , Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                    
+                </i:Interaction.Triggers>
+                
+                
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="DNI" DisplayMemberBinding="{Binding Path=_id}"/>
+                        <GridViewColumn Header="NOMBRE" DisplayMemberBinding="{Binding Path=Nombre}"/>
+                        <GridViewColumn Header="FECHA DE NACIMIENTO" DisplayMemberBinding="{Binding Path=Fecha}"/>
+                        <GridViewColumn Header="CURSO" DisplayMemberBinding="{Binding Path=Curso}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <!-- StockPanel datos de los estudiantes
+            -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="Firebrick">
+
+            <materialDesign:Card Padding="32" Margin="16">
+                <StackPanel>
+                    <TextBlock Text="Calificacion" HorizontalAlignment="Center" Margin="15" FontSize="20" FontWeight="DemiBold"/>
+
+
+                    <TextBox materialDesign:HintAssist.Hint="DNI:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            VerticalAlignment="Center" Width="200"
+                            FontSize="16"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            Text="{Binding CurrentStudent._id, UpdateSourceTrigger=PropertyChanged}"
+                             IsEnabled="{Binding EditorActivado}"
+                             />
+
+                    <TextBox materialDesign:HintAssist.Hint="Nombre:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            VerticalAlignment="Center" Width="200"
+                            FontSize="16"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            Text="{Binding CurrentStudent.Nombre, UpdateSourceTrigger=PropertyChanged}"
+                              IsEnabled="{Binding EditorActivado}"
+                             />
+                               
+
+                    <DatePicker Margin="10" Width="200" HorizontalContentAlignment="Left" 
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                materialDesign:HintAssist.Hint="Fecha de Nacimiento:"
+                                FontSize="16"
+                                SelectedDate="{Binding CurrentStudent.Fecha, StringFormat=dd/MM/yyyy}"
+                                 IsEnabled="{Binding EditorActivado}"/>
+
+                    <ComboBox Width="200" materialDesign:HintAssist.Hint="Curso:" 
+                              FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                              Text="{Binding CurrentStudent.Curso}" >
+                        IsEnabled="{Binding EditorActivado}
+                        <ComboBoxItem Content="Primero"/>
+                        <ComboBoxItem Content="Segundo"/>
+                        <ComboBoxItem Content="Tercero"/>
+                    </ComboBox>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30">
+                        <Button x:Name="btnEditar" Content="Editar" Width="100" Margin="5" Command="{Binding StudentCommand}" CommandParameter="editarHabilitado" Click="btnEditar_Clik"/>
+                        <Button x:Name="btnGuardar" Content="Guardar" Width="100" Margin="5" Command="{Binding StudentCommand}" CommandParameter="guardar"/>
+                        <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Margin="5" Command="{Binding StudentCommand}" CommandParameter="cancelarEditar" Click="btnCancelar_Clik"/>
+                        
+                    </StackPanel>
+                </StackPanel>
+
+
+            </materialDesign:Card>
+
+        </StackPanel>
+        <StackPanel  Grid.Row="1" Grid.Column="1" Background="Firebrick">
+            <materialDesign:Card Padding="5" Margin="10">
+                <StackPanel>
+                    <TextBlock Text="Calificaciones" HorizontalAlignment="Center" Margin="15" FontSize="24" FontWeight="DemiBold"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Desarrollo de Interfaces:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}" Text="{Binding CurrentSudent.Notas.DI}" Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" 
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="46" VerticalAlignment="Top" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Right" Text="Programación de Servicios y Procesos:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}" Text="{Binding CurrentSudent.Notas.PSP}"  Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Right" Text="Programación Multimedia y Dispositivos Móviles:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}"  Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Right" Text="Sistemas de Gestión empresarial:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}"  Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Right" Text="Acceso a Datos:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}"  Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Right" Text="Empresa e Iniciativa Emprendedora:" HorizontalAlignment="Right" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding listaNumeros}" Margin="5,0" Width="50" materialDesign:HintAssist.Hint="Nota:" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+
+                    </Grid>
+                </StackPanel>
+            </materialDesign:Card>
+            <!--<ListBox
+                Style="{StaticResource MaterialDesignChoiceChipListBox}"
+                x:Name="RadioButtonGroupChoiceChip">
+                <ListBoxItem Content="0" />
+                <ListBoxItem Content="1" />
+                <ListBoxItem Content="2" />
+                <ListBoxItem Content="3" />
+                <ListBoxItem Content="4" />
+                <ListBoxItem Content="5" />
+                <ListBoxItem Content="6" />
+                <ListBoxItem Content="7" />
+                <ListBoxItem Content="8" />
+                <ListBoxItem Content="9" />
+                <ListBoxItem Content="10" />
+            </ListBox>-->
+        </StackPanel>
+    </Grid>
+    
+</UserControl>
